@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="How often ChatGPT recommends Dextr AI across eight hotel-buyer questions, with six ranked fixes.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Does ChatGPT Recommend Dextr?">
+<meta property="og:description" content="How often ChatGPT recommends Dextr AI across eight hotel-buyer questions, with six ranked fixes.">
+<meta property="og:url" content="https://umeshxkataria.github.io/shortlist/dextr/">
+<meta property="og:image" content="https://umeshxkataria.github.io/shortlist/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://umeshxkataria.github.io/shortlist/og.png">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Does ChatGPT Recommend Dextr?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column like a hotel night-audit report, with one wide matrix "room board" that scrolls on its own */
+:root{
+  --bg:#f5f7f8;
+  --surface:#ffffff;
+  --fg:#16222c;
+  --muted:#5a6873;
+  --line:#d9e0e5;
+  --accent:#0d6a5b;
+  --accent-soft:#d8ece7;
+  --miss:#b4441a;
+  --miss-soft:#f6e3da;
+  --subject:#e9edf0;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1519; --surface:#151d22; --fg:#e4eaee; --muted:#93a1ab; --line:#26323a;
+    --accent:#4fbfa8; --accent-soft:#183a34; --miss:#f08a5d; --miss-soft:#3a2219; --subject:#1d262c;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1519; --surface:#151d22; --fg:#e4eaee; --muted:#93a1ab; --line:#26323a;
+  --accent:#4fbfa8; --accent-soft:#183a34; --miss:#f08a5d; --miss-soft:#3a2219; --subject:#1d262c;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:40px 64px;display:grid;gap:48px}
+.prose{max-width:66ch}
+h1,h2{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:-0.01em}
+h1{font-size:clamp(2.1rem, 5vw, 3.2rem);line-height:1.08}
+h2{font-size:1.6rem;line-height:1.2}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:16px}
+.lede{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.lede strong{color:var(--miss);font-weight:600}
+section{display:grid;gap:18px}
+.figures{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px}
+.fig{border-top:2px solid var(--line);padding-top:14px;display:grid;gap:6px}
+.fig .n{font-family:var(--display);font-size:2.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.fig.bad{border-top-color:var(--miss)}
+.fig.bad .n{color:var(--miss)}
+.fig p{color:var(--muted);font-size:0.95rem}
+.board{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line);font-size:0.9rem}
+thead th{font-family:var(--mono);font-weight:500;font-size:0.75rem;color:var(--muted);letter-spacing:0.04em}
+th[scope="row"]{text-align:left;font-weight:500;white-space:nowrap}
+tbody tr:last-child th, tbody tr:last-child td{border-bottom:none}
+td.hit span{display:inline-block;width:14px;height:14px;border-radius:3px;background:var(--accent)}
+td.no span{display:inline-block;width:14px;height:2px;background:var(--line)}
+td.subj{font-family:var(--mono);font-size:0.7rem;color:var(--muted);background:var(--subject)}
+td.total{font-family:var(--mono);font-weight:500;text-align:right}
+tr.you th, tr.you td{background:var(--miss-soft)}
+tr.you th{color:var(--miss);font-weight:600}
+tr.you td.total{color:var(--miss)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:0.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;background:var(--accent);margin-right:6px;vertical-align:-1px}
+ol.prompts{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+ol.prompts li{display:grid;grid-template-columns:3rem 1fr;gap:8px;align-items:baseline}
+ol.prompts b{font-family:var(--mono);font-weight:500;color:var(--muted);font-size:0.85rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px}
+.two > div{min-width:0;display:grid;gap:10px;align-content:start}
+ul.plain{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.src{display:grid;gap:8px}
+.src-row{display:grid;grid-template-columns:minmax(0, 11rem) 1fr 2.5rem;gap:12px;align-items:center;font-size:0.92rem}
+.bar{height:10px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--accent)}
+.src-row .c{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+ol.fixes{margin:0;padding:0;list-style:none;display:grid;gap:18px;counter-reset:fix}
+ol.fixes li{display:grid;grid-template-columns:2.2rem 1fr;gap:12px;counter-increment:fix}
+ol.fixes li::before{content:counter(fix);font-family:var(--display);font-size:1.5rem;line-height:1.2;color:var(--accent)}
+ol.fixes h3{margin:0 0 4px;font-size:1.02rem;font-weight:600}
+ol.fixes p{color:var(--muted);max-width:64ch}
+.offer{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px max(20px, 3vw);display:grid;gap:14px}
+.offer ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
+.note{font-size:0.88rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Sample AI visibility audit · Dextr AI · 20 Oct 2026</p>
+    <h1>Does ChatGPT recommend Dextr?</h1>
+    <p class="lede">We asked ChatGPT eight questions a hotel operator might ask before buying AI agents. It named 25 vendors across those answers. <strong>Dextr was not one of them</strong>, even on the voice-reservation questions that Daisy is built for.</p>
+  </header>
+
+  <section aria-label="Headline figures">
+    <div class="figures">
+      <div class="fig bad"><span class="n">0 / 8</span><p>buyer questions where ChatGPT named Dextr</p></div>
+      <div class="fig"><span class="n">5 / 8</span><p>for each of Canary, Akia and HiJiffy, the most-named vendors</p></div>
+      <div class="fig"><span class="n">5 / 8</span><p>answers that cited Conduit's own website as a source</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who gets recommended, question by question</h2>
+    <div class="board">
+      <table>
+        <thead>
+          <tr><th scope="col" style="text-align:left">Vendor</th><th scope="col">P1</th><th scope="col">P2</th><th scope="col">P3</th><th scope="col">P4</th><th scope="col">P5</th><th scope="col">P6</th><th scope="col">P7</th><th scope="col">P8</th><th scope="col" style="text-align:right">Named</th></tr>
+        </thead>
+        <tbody>
+          <tr class="you"><th scope="row">Dextr AI</th><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="total">0</td></tr>
+          <tr><th scope="row">Canary Technologies</th><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="subj">topic</td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="total">5</td></tr>
+          <tr><th scope="row">Akia</th><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="total">5</td></tr>
+          <tr><th scope="row">HiJiffy</th><td class="hit"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="total">5</td></tr>
+          <tr><th scope="row">Conduit</th><td class="no"><span></span></td><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="total">4</td></tr>
+          <tr><th scope="row">Asksuite</th><td class="hit"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="total">4</td></tr>
+          <tr><th scope="row">Visito</th><td class="hit"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="total">3</td></tr>
+          <tr><th scope="row">Duve</th><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="hit"><span></span></td><td class="total">3</td></tr>
+          <tr><th scope="row">PolyAI</th><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="total">2</td></tr>
+          <tr><th scope="row">HelloShift</th><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="total">2</td></tr>
+          <tr><th scope="row">Myma.ai</th><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="total">2</td></tr>
+          <tr><th scope="row">Actabl</th><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="hit"><span></span></td><td class="total">2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i></i>Named in ChatGPT's answer</span><span>"topic" means the question was about that vendor</span><span>14 more vendors were named once each</span></div>
+  </section>
+
+  <section>
+    <h2>The eight questions</h2>
+    <ol class="prompts">
+      <li><b>P1</b><span>What are the best AI agent platforms for hotels to automate guest messaging and reservations in India?</span></li>
+      <li><b>P2</b><span>What is the best AI voice agent for answering hotel reservation calls for franchised hotels like Best Western or Wyndham?</span></li>
+      <li><b>P3</b><span>What are the best alternatives to Canary Technologies for AI hotel guest communication and voice reservations?</span></li>
+      <li><b>P4</b><span>Which AI tools help hotels automate housekeeping scheduling and staff rostering?</span></li>
+      <li><b>P5</b><span>Best AI agent to answer after-hours phone calls and take bookings for a hotel in the US</span></li>
+      <li><b>P6</b><span>Best AI chatbot for a small boutique hotel to answer guest questions on WhatsApp and website chat</span></li>
+      <li><b>P7</b><span>Which AI software helps hotels increase upsells like room upgrades and early check-in?</span></li>
+      <li><b>P8</b><span>Top AI concierge platforms for hotels in 2026</span></li>
+    </ol>
+  </section>
+
+  <section class="two">
+    <div>
+      <h2>Asked about Dextr by name</h2>
+      <p class="prose">ChatGPT knows Dextr well once someone types the name. It described Daisy, Alfred and Manny, listed OPERA Cloud, Mews and Cloudbeds integrations, and repeated case-study results from Dextr's own site. It still told the buyer to pilot before committing, for two reasons:</p>
+      <ul class="plain">
+        <li>Only two reviews on Hotel Tech Report, which it called too few to judge.</li>
+        <li>No public pricing, so ROI is hard to estimate before a sales call.</li>
+      </ul>
+      <p class="prose">Your content works for people who already know you. Category questions are where new buyers start, and that is where Dextr is missing.</p>
+    </div>
+    <div>
+      <h2>Where the answers come from</h2>
+      <p class="prose">Sources ChatGPT cited most across the eight category answers:</p>
+      <div class="src">
+        <div class="src-row"><span>Conduit (vendor site)</span><div class="bar"><span style="width:62.5%"></span></div><span class="c">5</span></div>
+        <div class="src-row"><span>Hotel Tech Report</span><div class="bar"><span style="width:50%"></span></div><span class="c">4</span></div>
+        <div class="src-row"><span>Visito (vendor site)</span><div class="bar"><span style="width:37.5%"></span></div><span class="c">3</span></div>
+        <div class="src-row"><span>HiJiffy (vendor site)</span><div class="bar"><span style="width:37.5%"></span></div><span class="c">3</span></div>
+        <div class="src-row"><span>roommaster.com</span><div class="bar"><span style="width:25%"></span></div><span class="c">2</span></div>
+      </div>
+      <p class="note">Bars show how many of the 8 answers cited each source.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What to fix first</h2>
+    <ol class="fixes">
+      <li><div><h3>Get properties reviewing you on Hotel Tech Report</h3><p>It was cited in half the answers, and ChatGPT used your two reviews as a reason for caution. Dextr already works with hundreds of properties, so asking 20 of them for a review is the cheapest fix on this list.</p></div></li>
+      <li><div><h3>Publish your own comparison pages</h3><p>Conduit's website was cited in five of the eight answers, including ones where Conduit itself was recommended. Buyers ask "alternatives to Canary" and "best AI voice agent for hotels", and ChatGPT answers from pages written to those questions. Dextr needs honest versions of them, with tables.</p></div></li>
+      <li><div><h3>Write one page per franchise brand</h3><p>When asked about Best Western and Wyndham, ChatGPT gave brand-specific advice and put Canary first, citing Wyndham's rollout of it. Dextr serves Hilton, Wyndham, Best Western and IHG franchisees. A page per brand covering systems, approvals and results gives the engine something to cite.</p></div></li>
+      <li><div><h3>Show a pricing range</h3><p>"Pricing isn't public" was the second reason ChatGPT gave for hesitating. A starting price or a per-property range removes it.</p></div></li>
+      <li><div><h3>Get into the roundups engines already read</h3><p>Third-party lists like roommaster.com and Hotel Tech Report's category pages fed several answers. Pitching inclusion there puts Dextr inside the sources, not just on its own site.</p></div></li>
+      <li><div><h3>Use the buyer's words on your pages</h3><p>The questions say "AI voice agent for hotel reservations", "after-hours calls", "staff rostering" and "upsells". Matching that language on the pages for Daisy, Manny and Cosmo makes them easier to match to these questions.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="offer">
+    <h2>The full audit</h2>
+    <p class="prose">This sample is one engine and eight questions. The full version covers:</p>
+    <ul>
+      <li>25 buyer questions chosen around Daisy, Alfred, Manny and Cosmo</li>
+      <li>ChatGPT plus Perplexity and Gemini, with repeat runs to smooth out variation</li>
+      <li>Share of voice against Canary, Conduit, PolyAI and Akia</li>
+      <li>Every cited source, and a ranked fix list with page-level recommendations</li>
+    </ul>
+    <p><strong>$250, delivered in 48 hours.</strong> Reply on LinkedIn to book it: <a href="https://www.linkedin.com/in/umeshxkataria/">linkedin.com/in/umeshxkataria</a></p>
+  </section>
+
+  <p class="note">Method: ChatGPT web, signed out (basic model), run from India, one run per question on 20 Oct 2026. The full audit runs US-framed questions from a US perspective. A vendor counts as named when the answer recommends or lists it. AI answers vary between runs and users, so treat this as a snapshot. Dextr product details come from Dextr's seed announcement coverage (Inc42, Sep 2026).</p>
+</div>
+
+</body>
+</html>

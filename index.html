@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Find out whether ChatGPT, Perplexity and Gemini recommend your product. $250 AI visibility audit, delivered in 48 hours.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Shortlist Audit">
+<meta property="og:description" content="Find out whether ChatGPT, Perplexity and Gemini recommend your product. $250 AI visibility audit, delivered in 48 hours.">
+<meta property="og:url" content="https://umeshxkataria.github.io/shortlist/">
+<meta property="og:image" content="https://umeshxkataria.github.io/shortlist/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://umeshxkataria.github.io/shortlist/og.png">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>The Shortlist Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@600;700&display=swap">
+<style>
+/* Layout: an analyst's marked-up printout. Real AI answers set like evidence, with highlighter and red-pen notes over them. Single light "paper" world on purpose. */
+:root{
+  --paper:#f3f4f7;
+  --sheet:#ffffff;
+  --ink:#0d0f14;
+  --ink-2:#4a505c;
+  --rule:#dfe2e8;
+  --cobalt:#2340ff;
+  --cobalt-ink:#ffffff;
+  --marker:#ffe14d;
+  --pen:#e2342d;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --hand:"Caveat", "Comic Sans MS", cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+  background-image:linear-gradient(var(--rule) 1px, transparent 1px);background-size:100% 32px;background-attachment:local}
+.gut{padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.inner{max-width:1120px;margin:0 auto}
+h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:var(--mono)}
+.hand{font-family:var(--hand);color:var(--pen);font-weight:700;line-height:1}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:1rem;padding:14px 22px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--sheet);transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--cobalt)}
+.btn.alt{background:transparent;color:var(--ink)}
+.btn:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px}
+.mark{background:linear-gradient(transparent 55%, var(--marker) 55%, var(--marker) 92%, transparent 92%);padding:0 .08em}
+
+/* nav */
+nav{padding-block:18px}
+nav .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-0.02em;text-decoration:none}
+.logo i{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--cobalt);color:var(--cobalt-ink);font-style:normal;font-size:0.95rem}
+.navlinks{display:flex;align-items:center;gap:22px;font-size:0.95rem}
+.navlinks a{text-decoration:none;color:var(--ink-2)}
+.navlinks a:hover{color:var(--ink)}
+.navlinks .btn{padding:10px 18px;font-size:0.92rem;color:var(--sheet)}
+
+/* hero */
+.hero{padding-block:40px 72px}
+.hero .inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:56px;align-items:center}
+.hero-copy{display:grid;gap:24px;min-width:0}
+.tag{display:inline-flex;gap:10px;align-items:center;font-family:var(--mono);font-size:0.78rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-2)}
+.tag b{background:var(--ink);color:var(--sheet);padding:3px 8px;border-radius:4px;font-weight:500}
+h1{font-size:clamp(2.3rem, 6.4vw, 5rem);line-height:0.98;font-weight:800;letter-spacing:-0.035em}
+h1 .strike{position:relative;white-space:nowrap}
+h1 .strike svg{position:absolute;left:-2%;top:84%;width:104%;height:26%;overflow:visible;pointer-events:none}
+.sub{font-size:1.18rem;color:var(--ink-2);max-width:46ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* evidence sheet */
+.sheet{position:relative;background:var(--sheet);border:2px solid var(--ink);border-radius:14px;padding:22px 22px 26px;box-shadow:10px 10px 0 var(--ink);transform:rotate(1.2deg);display:grid;gap:16px;min-width:0}
+.sheet-head{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:0.72rem;color:var(--ink-2);border-bottom:1px dashed var(--rule);padding-bottom:10px;flex-wrap:wrap}
+.bubble{justify-self:end;max-width:90%;background:var(--paper);border-radius:14px 14px 4px 14px;padding:12px 14px;font-weight:500}
+.sheet ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sheet li{display:grid;grid-template-columns:2rem 1fr;align-items:center;padding:10px 12px;border-radius:8px;background:var(--paper);font-weight:600}
+.sheet li b{font-family:var(--mono);font-weight:500;color:var(--ink-2);font-size:0.85rem}
+.sheet li.gap{background:transparent;border:2px dashed var(--pen);color:var(--pen);position:relative}
+.sheet .circle{position:absolute;inset:-14px -10px;pointer-events:none}
+.note-you{position:absolute;right:-6px;bottom:-34px;font-size:1.9rem;transform:rotate(-6deg)}
+.note-top{position:absolute;left:-18px;top:-30px;font-size:1.6rem;transform:rotate(-8deg);background:var(--marker);color:var(--ink);padding:2px 10px;border-radius:4px}
+
+/* stat strip */
+.strip{background:var(--ink);color:var(--sheet);padding-block:26px}
+.strip .inner{display:grid;grid-template-columns:repeat(4, minmax(0,1fr));gap:20px}
+.strip div{display:grid;gap:2px}
+.strip .n{font-family:var(--display);font-weight:800;font-size:clamp(2rem, 4vw, 2.8rem);line-height:1;font-variant-numeric:tabular-nums}
+.strip span:last-child{font-size:0.9rem;color:#b9bfcc}
+
+/* sections */
+section.block{padding-block:88px 0}
+.head{display:grid;gap:12px;max-width:62ch;margin-bottom:36px}
+.kicker{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--cobalt);font-weight:500}
+h2{font-size:clamp(2rem, 4.4vw, 3.2rem);line-height:1.02;font-weight:800;letter-spacing:-0.03em}
+.head p{color:var(--ink-2);font-size:1.08rem}
+
+/* leaderboards */
+.boards{display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:32px}
+.board{position:relative;background:var(--sheet);border:2px solid var(--ink);border-radius:14px;padding:24px;display:grid;gap:18px;align-content:start;min-width:0;scroll-margin-top:24px}
+.board h3{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em}
+.board .meta{font-family:var(--mono);font-size:0.75rem;color:var(--ink-2)}
+.rows{display:grid;gap:9px}
+.row{display:grid;grid-template-columns:minmax(0,8.5rem) 1fr 2.6rem;gap:12px;align-items:center;font-weight:500;font-size:0.95rem}
+.track{height:14px;border-radius:999px;background:var(--paper);overflow:hidden}
+.track span{display:block;height:100%;border-radius:999px;background:var(--cobalt);transform-origin:left}
+.row .c{font-family:var(--mono);text-align:right;font-size:0.85rem;font-variant-numeric:tabular-nums}
+.row.top .track span{background:var(--ink)}
+.board .pen{font-size:1.65rem;transform:rotate(-2deg);max-width:24ch}
+.board .fine{color:var(--ink-2);font-size:0.95rem}
+
+/* get */
+.get{display:grid;grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));gap:20px}
+.card{background:var(--sheet);border:2px solid var(--ink);border-radius:14px;padding:22px;display:grid;gap:10px;align-content:start}
+.card .big{font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:1;color:var(--cobalt);letter-spacing:-0.03em}
+.card h3{font-size:1.2rem;font-weight:700}
+.card p{color:var(--ink-2);font-size:0.97rem}
+
+/* timeline */
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:0;position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:var(--ink)}
+.timeline li{position:relative;display:grid;gap:10px;padding-right:24px;align-content:start}
+.timeline .dot{width:32px;height:32px;border-radius:50%;background:var(--marker);border:2px solid var(--ink);position:relative}
+.timeline .hr{font-family:var(--mono);font-size:0.8rem;color:var(--cobalt);font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
+.timeline h3{font-size:1.25rem;font-weight:700}
+.timeline p{color:var(--ink-2);font-size:0.97rem}
+
+/* fixes */
+.fixes{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:20px}
+.fix{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:8px}
+.fix .hand{font-size:1.5rem}
+.fix h3{font-size:1.25rem;font-weight:700}
+.fix p{color:var(--ink-2)}
+
+/* pricing */
+.price{background:var(--sheet);border:2px solid var(--ink);border-radius:18px;box-shadow:10px 10px 0 var(--cobalt);padding:36px max(22px, 4vw);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:center}
+.amount{font-family:var(--display);font-weight:800;font-size:clamp(4rem, 11vw, 7.5rem);line-height:0.9;letter-spacing:-0.05em}
+.amount small{display:block;font-family:var(--body);font-weight:500;font-size:1.05rem;letter-spacing:0;color:var(--ink-2);margin-top:12px}
+.price ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.price li{display:flex;gap:10px;align-items:baseline}
+.price li::before{content:"✓";font-weight:700;color:var(--cobalt)}
+.slots{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.slot{padding:6px 10px;border:2px dashed var(--ink);border-radius:8px;font-family:var(--mono);font-size:0.75rem}
+.slots .hand{font-size:1.4rem;margin-left:6px}
+.price-right{display:grid;gap:20px;min-width:0}
+
+/* closer */
+.closer{margin-top:96px;background:var(--cobalt);color:var(--cobalt-ink);padding-block:72px}
+.closer .inner{display:grid;gap:26px;justify-items:start}
+.closer h2{font-size:clamp(2.6rem, 7vw, 5.4rem);color:var(--cobalt-ink)}
+.closer p{font-size:1.15rem;max-width:50ch;color:#dfe4ff}
+.closer .btn{background:var(--sheet);color:var(--ink);border-color:var(--sheet)}
+.closer .btn:hover{box-shadow:4px 4px 0 var(--ink)}
+footer{background:var(--ink);color:#b9bfcc;padding-block:28px;font-size:0.86rem}
+footer .inner{display:grid;gap:8px}
+footer a{color:var(--sheet)}
+
+/* motion: decorative marks draw in; content is visible at rest */
+.draw{stroke-dasharray:600;stroke-dashoffset:0}
+@media (prefers-reduced-motion: no-preference){
+  .draw{animation:draw 1.1s .5s ease-out both}
+  .track span{animation:grow .9s ease-out both}
+  @keyframes draw{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+  @keyframes grow{from{transform:scaleX(.08)}to{transform:scaleX(1)}}
+}
+
+@media (max-width: 880px){
+  .hero .inner{grid-template-columns:1fr;gap:56px}
+  .sheet{transform:none;margin-right:10px}
+  .price{grid-template-columns:1fr}
+  .navlinks a:not(.btn){display:none}
+}
+@media (max-width: 640px){
+  .strip .inner{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .timeline{grid-template-columns:1fr;gap:28px}
+  .timeline::before{left:15px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .timeline li{grid-template-columns:32px 1fr;column-gap:16px;padding-right:0}
+  .timeline li > *:not(.dot){grid-column:2}
+  .timeline .dot{grid-row:1 / span 3}
+  .note-top{left:0}
+}
+</style>
+</head>
+<body>
+
+<nav class="gut">
+  <div class="inner">
+    <a class="logo" href="#top"><i>S</i>Shortlist</a>
+    <div class="navlinks">
+      <a href="#results">This week's data</a>
+      <a href="#get">What you get</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn" href="https://www.linkedin.com/in/umeshxkataria/" target="_blank" rel="noopener">Book an audit</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero gut" id="top">
+  <div class="inner">
+    <div class="hero-copy">
+      <span class="tag"><b>AI visibility audit</b> $250 · 48 hours</span>
+      <h1>Your buyers asked ChatGPT. It recommended <span class="strike">your competitors<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path class="draw" d="M4 18 C 60 8, 120 26, 180 14 S 270 10, 296 16" fill="none" stroke="#e2342d" stroke-width="5" stroke-linecap="round"/></svg></span>.</h1>
+      <p class="sub">I ask ChatGPT, Perplexity and Gemini the questions your buyers ask, find out who gets named and why, and hand you a ranked list of fixes.</p>
+      <div class="ctas">
+        <a class="btn" href="https://www.linkedin.com/in/umeshxkataria/" target="_blank" rel="noopener">Book an audit · $250 →</a>
+        <a class="btn alt" href="#results">See this week's data</a>
+      </div>
+    </div>
+
+    <figure class="sheet" aria-label="A real ChatGPT answer captured on 20 October 2026, with an empty slot for the reader's product">
+      <span class="hand note-top">real answer ↓</span>
+      <div class="sheet-head"><span>chatgpt.com · signed out</span><span>20 Oct 2026</span></div>
+      <p class="bubble">Best AI agent to answer after-hours phone calls and take bookings for a hotel in the US</p>
+      <ol>
+        <li><b>01</b><span>Conduit</span></li>
+        <li><b>02</b><span>PolyAI</span></li>
+        <li><b>03</b><span>Canary Technologies</span></li>
+        <li><b>04</b><span>HelloShift</span></li>
+        <li class="gap"><b>05</b><span>&nbsp;</span>
+          <svg class="circle" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true"><path class="draw" d="M30 40 C 30 8, 370 4, 380 36 C 390 70, 40 78, 22 46 C 14 30, 60 14, 120 12" fill="none" stroke="#e2342d" stroke-width="3" stroke-linecap="round"/></svg>
+        </li>
+      </ol>
+      <span class="hand note-you">where are you?</span>
+    </figure>
+  </div>
+</header>
+
+<div class="strip gut" aria-label="This week's numbers">
+  <div class="inner">
+    <div><span class="n">16</span><span>buyer questions asked</span></div>
+    <div><span class="n">49</span><span>vendors named</span></div>
+    <div><span class="n">31</span><span>named only once</span></div>
+    <div><span class="n">2</span><span>categories audited</span></div>
+  </div>
+</div>
+
+<section class="block gut" id="results">
+  <div class="inner">
+    <div class="head">
+      <span class="kicker">This week's data</span>
+      <h2>Who AI actually recommends</h2>
+      <p>Eight buyer questions per category, asked in ChatGPT. Bars show how many of the eight answers named each vendor.</p>
+    </div>
+    <div class="boards">
+      <article class="board" id="hotels">
+        <div><h3>Hotel AI software</h3><p class="meta">25 vendors named · 8 questions</p></div>
+        <div class="rows">
+          <div class="row top"><span>Canary</span><div class="track"><span style="width:62.5%"></span></div><span class="c">5/8</span></div>
+          <div class="row top"><span>Akia</span><div class="track"><span style="width:62.5%"></span></div><span class="c">5/8</span></div>
+          <div class="row top"><span>HiJiffy</span><div class="track"><span style="width:62.5%"></span></div><span class="c">5/8</span></div>
+          <div class="row"><span>Conduit</span><div class="track"><span style="width:50%"></span></div><span class="c">4/8</span></div>
+          <div class="row"><span>Asksuite</span><div class="track"><span style="width:50%"></span></div><span class="c">4/8</span></div>
+          <div class="row"><span>Visito</span><div class="track"><span style="width:37.5%"></span></div><span class="c">3/8</span></div>
+          <div class="row"><span>Duve</span><div class="track"><span style="width:37.5%"></span></div><span class="c">3/8</span></div>
+        </div>
+        <p class="hand pen">Conduit's own site was a source in 5 of 8 answers.</p>
+        <p class="fine">Three vendors took most of the slots. 14 others appeared once.</p>
+      </article>
+      <article class="board" id="receptionists">
+        <div><h3>AI receptionists</h3><p class="meta">24 vendors named · 8 questions</p></div>
+        <div class="rows">
+          <div class="row top"><span>Goodcall</span><div class="track"><span style="width:37.5%"></span></div><span class="c">3/8</span></div>
+          <div class="row top"><span>Smith.ai</span><div class="track"><span style="width:37.5%"></span></div><span class="c">3/8</span></div>
+          <div class="row top"><span>My AI Front Desk</span><div class="track"><span style="width:37.5%"></span></div><span class="c">3/8</span></div>
+          <div class="row"><span>Rosie</span><div class="track"><span style="width:25%"></span></div><span class="c">2/8</span></div>
+          <div class="row"><span>Upfirst</span><div class="track"><span style="width:25%"></span></div><span class="c">2/8</span></div>
+          <div class="row"><span>Retell AI</span><div class="track"><span style="width:25%"></span></div><span class="c">2/8</span></div>
+          <div class="row"><span>Ruby</span><div class="track"><span style="width:25%"></span></div><span class="c">2/8</span></div>
+        </div>
+        <p class="hand pen">Top score is 3 of 8. Nobody owns this yet.</p>
+        <p class="fine">Industry questions went to specialists: dental to Arini, HVAC to Rosie, law firms to Smith.ai.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block gut" id="get">
+  <div class="inner">
+    <div class="head">
+      <span class="kicker">What you get</span>
+      <h2>Your category, <span class="mark">from the buyer's side</span></h2>
+    </div>
+    <div class="get">
+      <div class="card"><span class="big">25</span><h3>Buyer questions</h3><p>Written around what you sell, who buys it, and the competitors you lose deals to.</p></div>
+      <div class="card"><span class="big">3</span><h3>Answer engines</h3><p>ChatGPT, Perplexity and Gemini, with repeat runs so one lucky answer doesn't skew the result.</p></div>
+      <div class="card"><span class="big">%</span><h3>Share of voice</h3><p>How often you're named next to each competitor, question by question.</p></div>
+      <div class="card"><span class="big">10</span><h3>Ranked fixes</h3><p>Every source the engines cited, and the specific pages and placements that would get you named.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block gut">
+  <div class="inner">
+    <div class="head">
+      <span class="kicker">How it works</span>
+      <h2>Two days, start to finish</h2>
+    </div>
+    <ol class="timeline">
+      <li><span class="dot"></span><span class="hr">Hour 0</span><h3>Message me</h3><p>Send your website and 2 or 3 competitors on LinkedIn.</p></li>
+      <li><span class="dot"></span><span class="hr">Hour 1</span><h3>Pay by link</h3><p>You get a payment link and I start the same day.</p></li>
+      <li><span class="dot"></span><span class="hr">Hour 48</span><h3>Get the report</h3><p>Questions, share of voice, sources and your fix list in one shareable page.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block gut">
+  <div class="inner">
+    <div class="head">
+      <span class="kicker">What the fixes look like</span>
+      <h2>Most gaps come down to three things</h2>
+    </div>
+    <div class="fixes">
+      <div class="fix"><span class="hand">#1</span><h3>Comparison pages</h3><p>Answers lean on pages written for "alternatives to X" and "best tools for Y". Without your own version, a competitor's gets quoted.</p></div>
+      <div class="fix"><span class="hand">#2</span><h3>Review sites</h3><p>Hotel Tech Report was a source in half the hotel answers, and ChatGPT warns buyers about vendors with few reviews.</p></div>
+      <div class="fix"><span class="hand">#3</span><h3>Industry pages</h3><p>Questions that name an industry get specialists as answers. A page per industry gives the engine something to cite.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block gut" id="pricing">
+  <div class="inner">
+    <div class="price">
+      <div class="amount">$250<small>per product · ₹20,000 for Indian companies</small></div>
+      <div class="price-right">
+        <ul>
+          <li>25 questions across 3 answer engines</li>
+          <li>Share of voice against your competitors</li>
+          <li>Cited sources and a ranked fix list</li>
+          <li>Delivered in 48 hours</li>
+        </ul>
+        <div>
+          <p class="mono" style="font-size:0.8rem;color:var(--ink-2)">AUDITS THIS WEEK</p>
+          <div class="slots"><span class="slot">open</span><span class="slot">open</span><span class="slot">open</span><span class="slot">open</span><span class="hand">only 4</span></div>
+        </div>
+        <a class="btn" href="https://www.linkedin.com/in/umeshxkataria/" target="_blank" rel="noopener">Book on LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closer gut">
+  <div class="inner">
+    <h2>Get on the shortlist.</h2>
+    <p>Your buyers are already asking AI which tool to pick. Find out what it tells them.</p>
+    <a class="btn" href="https://www.linkedin.com/in/umeshxkataria/" target="_blank" rel="noopener">Message Umesh on LinkedIn →</a>
+  </div>
+</section>
+
+<footer class="gut">
+  <div class="inner">
+    <p>Shortlist is run by Umesh Kataria · linkedin.com/in/umeshxkataria</p>
+    <p>Data: ChatGPT on the web, signed out, run from India, one run per question on 20 Oct 2026. AI answers vary between runs and users, so treat them as a snapshot.</p>
+  </div>
+</footer>
+
+</body>
+</html>
